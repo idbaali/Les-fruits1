@@ -1,4 +1,5 @@
 let fruits = [{ name: "Orange", image: "orange.jpg" }, { name: "Kiwi", image: "kiwi.jpg" }, { name: "Banane", image: "banane.jpg" }, { name: "Peche", image: "peche.jpg" }, { name: "Cerise", image: "cerise.jpg" }];
+let imageSelected = "all-fruits.jpg";
 
 const imageBlock = document.querySelector("#imageFruit");
 const buttonBlock = document.querySelector("#fruits");
@@ -12,13 +13,16 @@ fruits.forEach(fruit => {
         imageBlock.style.backgroundImage = "url(" + fruit.image + ")";
     })
     divElement.addEventListener("mouseout", (event) => {
-        imageBlock.style.backgroundImage = "url(all-fruits.jpg)";
+        imageBlock.style.backgroundImage = `url(${imageSelected})`;
     })
     divElement.addEventListener("click", (event) => {
+        imageSelected = fruit.image;
         const allDiv = document.querySelectorAll(".boutonFruits");
         allDiv.forEach(oneDiv => {
             oneDiv.style.backgroundColor = "";
+
         })
+
         divElement.style.backgroundColor = "red";
     })
 })
